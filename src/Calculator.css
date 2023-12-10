@@ -1,0 +1,66 @@
+div{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    background-color: aqua;
+    margin-top: 5px;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+}
+.result{
+    flex-grow: 1;
+    width: 95%;
+    
+}
+.result input{
+    font-size: 2rem;
+    text-align: end;
+    margin: 0.5rem;
+    width: 95%;
+    background: hsl(202, 11%, 29%);
+    color: hsl(255, 100%, 100%);
+    padding-block-start: 0.25rem;
+    padding-block-end: 0.25rem;
+    padding-inline-end: 0.75rem;
+}
+.oparations{
+    display: flex;
+    width: 95%;
+}
+.numbers{
+    display: inline-block;
+    flex-grow: 3;
+    width: -webkit-fill-available;
+}
+
+.oparations button{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1px;
+    background: beige;
+    border: none;
+    padding-block-start: 0.5rem; 
+    padding-block-end: 0.5rem; 
+    padding-inline-start: 1.25rem; 
+    padding-inline-end: 1.25rem; 
+    font-size: 1.5rem;
+}
+
+.oparators{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.oparators button{
+    margin: 2px;
+}
