@@ -77,7 +77,7 @@ function Calculator() {
     //   alert("please refresh the page");
     // }
     else {
-      alert("please refresh the page");
+      alert("please type both the input");
     }
   };
 
