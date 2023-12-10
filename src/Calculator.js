@@ -17,9 +17,9 @@ function Calculator() {
   const handleNumberClick = (value) => {
     if (value === "C") {
       setInput1((prevInput) => prevInput.slice(0, -1));
-      if (input2 !== "") {
-        setInput2((prevInput) => prevInput.slice(0, -1));
-      }
+      // if (input2 !== "") {
+      //   setInput2((prevInput) => prevInput.slice(0, -1));
+      // }
       if (result !== "") {
         setResult("");
       }
@@ -41,9 +41,9 @@ function Calculator() {
       setInput1("");
     }
     //setInput1("0");
-    setSymbol(e.target.value);
-    setInput2((prevInput) => prevInput + input1 + e.target.value);
-    setInput1("");
+    // setSymbol(e.target.value);
+    // //setInput2((prevInput) => prevInput + input1 + e.target.value);
+    // setInput1("");
   };
 
   const handleSubmit = (e) => {
