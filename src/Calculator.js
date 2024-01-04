@@ -1,12 +1,11 @@
-import "./Calculator.css";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 function Calculator() {
   const number = [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", "9"],
-    ["0", ".", "C"],
+    ["1", "2", "3", "+"],
+    ["4", "5", "6", "-"],
+    ["7", "8", "9", "*"],
+    ["0", "C", "=", "/"],
   ];
 
   const [result, setResult] = useState("");
@@ -14,39 +13,62 @@ function Calculator() {
   const [input2, setInput2] = useState("");
   const [symbol, setSymbol] = useState("");
 
-  const handleNumberClick = (value) => {
-    if (value === "C") {
-      setInput1((prevInput) => prevInput.slice(0, -1));
-      // if (input2 !== "") {
-      //   setInput2((prevInput) => prevInput.slice(0, -1));
-      // }
-      if (result !== "") {
-        setResult("");
-      }
-    } else {
-      if (result !== "") {
-        setResult("");
-      }
-      setInput1((prevInput) => prevInput + value);
-    }
-  };
+  const handleNumberClick = useCallback(
+    (value) => {
+      if (value !== "=") {
+        setInput1(input1 + value);
+        if (value === "+" || value === "-" || value === "*" || value === "/") {
+          handleOperatorClick(value);
+        }
+        if (value === "C") {
+          setResult("");
+          setInput1("");
+          setInput2("");
 
-  const handleOperatorClick = (e) => {
+          setSymbol("");
+        }
+      } else if (value === "=") {
+        handleSubmit();
+      }
+    },
+    [input1, setInput1]
+  );
+
+  // useEffect(() => {
+  //   console.log(input2);
+  // }, [input2]);
+
+  const handleOperatorClick = (value) => {
+    // console.log(input1);
     if (result !== "") {
       setResult("");
     }
+
     if (input1 !== "") {
-      setSymbol(e.target.value);
-      setInput2((prevInput) => prevInput + input1 + e.target.value);
+      if (symbol === "") {
+        setInput2(input1 + value);
+      } else {
+        setInput2((prevInput2) => prevInput2.slice(0, -1) + value);
+      }
+
       setInput1("");
+      setSymbol(value);
+    } else if (
+      (value === "+" || value === "-" || value === "*" || value === "/") &&
+      input2 !== ""
+    ) {
+      setInput2((prevInput2) => prevInput2.slice(0, -1) + value);
+      setSymbol(value);
     }
-    //setInput1("0");
-    // setSymbol(e.target.value);
-    // //setInput2((prevInput) => prevInput + input1 + e.target.value);
-    // setInput1("");
   };
 
-  const handleSubmit = (e) => {
+  // const handleSignChange = () => {
+  //   setInput1((prevInput) =>
+  //     prevInput[0] === "-" ? prevInput.slice(1) : "-" + prevInput
+  //   );
+  // };
+
+  const handleSubmit = () => {
     if (input1 !== "" && input2 !== "") {
       const num1 = parseFloat(input2);
       const num2 = parseFloat(input1);
@@ -54,7 +76,6 @@ function Calculator() {
       switch (symbol) {
         case "+":
           setResult(num1 + num2);
-          setInput1(result);
           break;
         case "-":
           setResult(num1 - num2);
@@ -69,14 +90,12 @@ function Calculator() {
           setResult("");
       }
 
-      setInput1("");
+      setInput1((prevInput1) =>
+        prevInput1 !== "" ? prevInput1 : result.toString()
+      );
       setInput2("");
       setSymbol("");
-    }
-    // else if(input1 !=="" || input2 !== ""){
-    //   alert("please refresh the page");
-    // }
-    else {
+    } else {
       alert("please type both the input");
     }
   };
@@ -114,23 +133,6 @@ function Calculator() {
               ))}
             </tbody>
           </table>
-        </div>
-        <div className="oparators">
-          <button value={"+"} onClick={handleOperatorClick}>
-            +
-          </button>
-          <button value={"-"} onClick={handleOperatorClick}>
-            -
-          </button>
-          <button value={"*"} onClick={handleOperatorClick}>
-            x
-          </button>
-          <button value={"/"} onClick={handleOperatorClick}>
-            /
-          </button>
-          <button type="submit" onClick={handleSubmit}>
-            =
-          </button>
         </div>
       </div>
     </div>
