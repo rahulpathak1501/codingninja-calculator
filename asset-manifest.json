@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/codingninja-calculator/static/css/main.e43e7f2d.css",
-    "main.js": "/codingninja-calculator/static/js/main.22437b73.js",
+    "main.css": "/codingninja-calculator/static/css/main.a773e307.css",
+    "main.js": "/codingninja-calculator/static/js/main.2fa9d360.js",
     "index.html": "/codingninja-calculator/index.html",
-    "main.e43e7f2d.css.map": "/codingninja-calculator/static/css/main.e43e7f2d.css.map",
-    "main.22437b73.js.map": "/codingninja-calculator/static/js/main.22437b73.js.map"
+    "main.a773e307.css.map": "/codingninja-calculator/static/css/main.a773e307.css.map",
+    "main.2fa9d360.js.map": "/codingninja-calculator/static/js/main.2fa9d360.js.map"
   },
   "entrypoints": [
-    "static/css/main.e43e7f2d.css",
-    "static/js/main.22437b73.js"
+    "static/css/main.a773e307.css",
+    "static/js/main.2fa9d360.js"
   ]
 }
